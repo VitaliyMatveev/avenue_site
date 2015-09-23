@@ -1,0 +1,46 @@
+html,body{
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+#logo{
+	position: absolute;
+	top:50%;
+	margin-top: -100px;
+	left: 30%;
+	width: 40%;
+	height: 100px;
+}
+#logo path{
+	stroke-dasharray: 200;
+	stroke-dashoffset: 200;
+}
+
+.header{
+	height: 60px;
+	line-height: 59px;
+	width: 100%;
+	background: #252a29;
+	animation: shadow 2s infinite ease-in-out;
+	color: #fff;
+}
+.header ul{
+	margin: 0;
+	height: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+.header ul>li{
+	display: inline-block;
+	padding: 0px 30px;
+	cursor: pointer;
+}
+.header ul>li:hover{
+	background-color: #333;
+}		
+
+@keyframes shadow {
+from {text-shadow: 0 0 3px black;}
+50% {text-shadow: 0 0 30px black;}
+to {text-shadow: 0 0 3px black;}
+}
