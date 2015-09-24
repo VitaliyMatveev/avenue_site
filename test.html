@@ -6,26 +6,26 @@
 		.rect{
 			position: absolute;
 			width: 50px;
-			height: 50px;			
+			height: 50px;
 		}
 		.line{
 			position: absolute;
 			height: 100%;
 			width: 5%;
 			background-color: transparent;
-			transform-origin: 0 100%;			
-			transform: rotate3d(1,0,0,30deg);				
-			
-			/*transition: box-shadow 580ms ease-in,background-color 0s ease 580ms;		
+			transform-origin: 0 100%;
+			transform: rotate3d(1,0,0,30deg);
+
+			/*transition: box-shadow 580ms ease-in,background-color 0s ease 580ms;
 		    box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 0px 0px 0px inset;	*/
 		    /*animate: first-step 580ms;*/
 		}
 		.line>div{
 			background-color: red;
 		}
-		.line.first{			
+		.line.first{
 			box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 1200px 0px 0px inset;
-			background-color: red;			
+			background-color: red;
 		}
 		.line.second{
 			box-shadow: transparent 1200px 0px 0px 0px inset;
@@ -35,7 +35,7 @@
 		}
 		.line.two{
 			left: 50%;
-			
+
 		}
 		.line.tree{
 			left: 60%;
@@ -49,48 +49,216 @@
 			left: 0%;
 			width: 100%;
 			height: 98%;
-			
+
 		}
 		@keyframes first-step {
 			from {
-				box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 0px 0px 0px inset;	
+				box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 0px 0px 0px inset;
 				animation-timing-function: ease-in;
 			}
 			to{
-				box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 1200px 0px 0px inset;	
+				box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 1200px 0px 0px inset;
 			}
+		}
+		#paper{
+			position: absolute;
+			width: 100%;
+			height: 100%;
+		}
+		svg{
+			position: absolute;
+		}
+		path{
+			stroke-dasharray: 0, 3000;
+			transition: all 1s ease;
+			transform-origin: 50%;
+		}
+		.show path{
+			stroke-dasharray:3000;
+		}
+		.show #a-center{
+			transform: scaleX(1);
+			transform-origin:50% 50%;
+		}
+		#a-center{
+			transform-origin:60% 50%;
+			transform:scaleX(0);
+			transition:all 1s ease;
+		}
+		g{
+			transition: all 1s linear 1s;
+			transform-origin: 70% 50%;
+		}
+		.show g{
+      transform: rotateZ(-25deg);
+
+		}
+		body{
+			margin: 0;
 		}
 	</style>
 </head>
 <body>
 <button id="go">Lets rock!</button>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   id="svg7424"
+   version="1.1"
+   inkscape:version="0.91 r13725"
+
+   height="100%"
+   viewBox="-20 100 900 900"
+   sodipodi:docname="a_litera.svg">
+  <metadata
+     id="metadata7430">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs7428" />
+  <g>
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:60;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;transform:skew(-25deg)"
+     d="m500,1000l0,-1000 450,0"
+     id="path7974"
+     inkscape:connector-curvature="0"
+     sodipodi:odetypes="cc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:60;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;transform:skew(-25deg)"
+     d="m560,1000l0,-870 250,0 750,1050"
+     id="path7974"
+     inkscape:connector-curvature="0"
+     sodipodi:odetypes="cc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:60;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;transform:skew(-25deg)"
+     d="m610,1000 0,-300 550,0"
+     id="path7974"
+     inkscape:connector-curvature="0"
+     sodipodi:odetypes="cc" />
+
+  <path
+     style="fill:#000;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;"
+     d="m760,450 100,-220 70,0 70,220z "
+     inkscape:connector-curvature="0"
+     sodipodi:odetypes="cc"
+     id="a-center" />
+
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:60;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;transform:skew(-25deg)"
+     d="m600,560 600,0"
+     id="path7974"
+     inkscape:connector-curvature="0"
+     sodipodi:odetypes="cc" />
+  </g>
+  <!-- <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:65;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 1525.6955,-367.83428 880.53155,1103.6697"
+     id="path7976"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:65;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="M 2074.9883,1070.7511 1485.8848,-292.19088"
+     id="path7978"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:65;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 1138.1584,534.7402 710.4239,0.29967"
+     id="path7980"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="cc" />
+  <path
+     style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:65;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+     d="m 1060.2945,1077.3386 170.7551,-397.19906 666.9837,-0.41753"
+     id="path7982"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccc" />
+  <path
+     style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     d="m 1309.4319,421.03954 166.8115,-397.305524 24.867,-0.734494 168.0616,398.449218 z"
+     id="path7984"
+     inkscape:connector-curvature="0"
+     sodipodi:nodetypes="ccccc" />
+  <path
+     style="fill:#ff0000;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
+     d="m 1138.9831,567.26695 0,-65.625 692.9555,0 0,65.625 z"
+     id="path11106"
+     inkscape:connector-curvature="0" />
+  <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 1">
+
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 684.26064,1094.0444 69.21257,0 579.92119,-1316.71573 381.1897,0.26988 1.9547,-56.35859 -424.9642,3.14603 z"
+       id="path11100"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 1022.4584,1086.3142 70.19,-1.1123 158.6834,-373.39969 661.452,0 -3.1461,-66.06654 -698.4177,0 z"
+       id="path11104"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccc" />
+    <path
+       style="fill:#ff0000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 851.00001,1088.5388 72.3586,0 517.52129,-1182.119226 94.3808,0 509.9915,1176.935526 69.8641,-1.1123 -534.2383,-1237.17073 -184.0425,0 z"
+       id="path11102"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccccccccc" />
+  </g> -->
+</svg>
+<!-- <div id="paper">
+</div>
 <div class="cube">
 	<div class="line one">
 		<div></div>
 	</div>
-		
+
 	<div class="line two">
 		<div></div>
 	</div>
 	<div class="line tree">
 		<div></div>
-	</div>
+	</div> -->
 	<!-- <div class="rect"></div>
 	<div class="rect"></div>
 	<div class="rect"></div> -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-
+	<script type="text/javascript" src="./raphael-min.js"></script>
 	<script type="text/javascript">
 		$("#go").on("click",function(e){
-			var $lines = $(".line>div");
-			$.when($lines.animate({ height: '100%'}, 1000)).then(function(){
-				var height = $(".line").height();
-				console.log(height);
-				$.when($lines.animate({height:0, marginTop: height},1000)).
-					then(function(){$lines.css({marginTop:0})});
-			});
+			// var $lines = $(".line>div");
+			// $.when($lines.animate({ height: '100%'}, 1000)).then(function(){
+			// 	var height = $(".line").height();
+			// 	console.log(height);
+			// 	$.when($lines.animate({height:0, marginTop: height},1000)).
+			// 		then(function(){$lines.css({marginTop:0})});
+			// });
+		console.log($("#svg7424"))
+			$("#svg7424").attr({"class":"show"});
 		})
+		//var paper = Raphael("paper");
+		//paper.setViewBox(0,0,1680,1050);
+		// var l = paper.path("m 1022.4584,1086.3142 70.19,-1.1123 158.6834,-373.39969 661.452,0 -3.1461,-66.06654 -698.4177,0 z").attr({fill:"#000","stroke":"#000"});
+
 	</script>
-</div>			
+</div>
 </body>
 </html>
