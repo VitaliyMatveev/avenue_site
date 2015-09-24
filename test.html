@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+		.rect{
+			position: absolute;
+			width: 50px;
+			height: 50px;			
+		}
+		.line{
+			position: absolute;
+			height: 100%;
+			width: 5%;
+			background-color: transparent;
+			transform-origin: 0 100%;			
+			transform: rotate3d(1,0,0,30deg);				
+			
+			/*transition: box-shadow 580ms ease-in,background-color 0s ease 580ms;		
+		    box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 0px 0px 0px inset;	*/
+		    /*animate: first-step 580ms;*/
+		}
+		.line>div{
+			background-color: red;
+		}
+		.line.first{			
+			box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 1200px 0px 0px inset;
+			background-color: red;			
+		}
+		.line.second{
+			box-shadow: transparent 1200px 0px 0px 0px inset;
+		}
+		.line.one{
+			left: 40%;
+		}
+		.line.two{
+			left: 50%;
+			
+		}
+		.line.tree{
+			left: 60%;
+		}
+		.cube{
+			z-index: -100;
+			transform-style: preserve-3d;
+			transform: perspective(150px);
+			position: absolute;
+			top: 0%;
+			left: 0%;
+			width: 100%;
+			height: 98%;
+			
+		}
+		@keyframes first-step {
+			from {
+				box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 0px 0px 0px inset;	
+				animation-timing-function: ease-in;
+			}
+			to{
+				box-shadow: #FFF 0px 100px 50px -20px inset, red 0px 1200px 0px 0px inset;	
+			}
+		}
+	</style>
+</head>
+<body>
+<button id="go">Lets rock!</button>
+<div class="cube">
+	<div class="line one">
+		<div></div>
+	</div>
+		
+	<div class="line two">
+		<div></div>
+	</div>
+	<div class="line tree">
+		<div></div>
+	</div>
+	<!-- <div class="rect"></div>
+	<div class="rect"></div>
+	<div class="rect"></div> -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+	<script type="text/javascript">
+		$("#go").on("click",function(e){
+			var $lines = $(".line>div");
+			$.when($lines.animate({ height: '100%'}, 1000)).then(function(){
+				var height = $(".line").height();
+				console.log(height);
+				$.when($lines.animate({height:0, marginTop: height},1000)).
+					then(function(){$lines.css({marginTop:0})});
+			});
+		})
+	</script>
+</div>			
+</body>
+</html>

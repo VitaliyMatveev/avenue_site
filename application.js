@@ -1,7 +1,12 @@
 $(function(){
 	console.log("start");
-	// var paper = Raphael("logo",300,100);
-	// paper.setStart();
+	// var paper = Raphael("lines");
+	 //paper.setViewBox(0,0,1680,1050);
+	 //var path = paper.path("m .44703,371.50424 0,622.88135").attr({"stroke":"#3eeec1","stroke-width":"50"}); 
+	  //var transformedPath = paper.path("m 792.45387,375.85333 12.64442,0 57.7549,569.01929 -63.07643,0 z").attr({"fill":"000"}).glow({fill:true,he});
+	  	//animate({"fill":"90-#000-#fff"},1000);
+	 // path.animate({path:transformedPath},1000);
+	 //paper.rect(961.57306, 251.37711, 67.29351, 750.79449).attr({"fill":"#3eeec1","stroke":"none"});
 	// paper.path("m 4.97459,1040.594 29.30565,-68.47519 14.86725,10e-6 30.16338,68.47518").attr("id","test");
 	// paper.path("m 23.80829,1015.159 35.48049,0");
 	// paper.path("M 12.50385,1040.5193 39.06884,979.47269").attr({"stroke":"#3fb5dd"});
@@ -10,6 +15,7 @@ $(function(){
 	// paper.path("m 20.55625,1041.1575 8.1484,-18.1552 26.16065,0.072 8.00545,17.9408");
 	// paper.setFinish().attr({"stroke-width":"3"}).transform("t0,-952.36204")	
 	
+
 	addAnimate('a1',1,11);
 	addAnimate("a2",2,6);
 	addAnimate("a3",6,15);
