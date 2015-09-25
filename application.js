@@ -16,47 +16,78 @@ $(function(){
 	// paper.setFinish().attr({"stroke-width":"3"}).transform("t0,-952.36204")	
 	
 
-	addAnimate('a1',1,11);
-	addAnimate("a2",2,6);
-	addAnimate("a3",6,15);
-	addAnimate("a4",8,11);
-	addAnimate("a5",8,19);
-	addAnimate("a6",11,21);
+	addAnimate('a1',25,35);
+	addAnimate("a2",27,31);
+	addAnimate("a3",31,40);
+	addAnimate("a4",33,36);
+	addAnimate("a5",33,44);
+	addAnimate("a6",35,46);
 
-	addAnimate('v1',4,14);
-	addAnimate("v2",7,14);
-	addAnimate("v3",12,24);
-	addAnimate("v4",13,19);
+	addAnimate('v1',29,35);
+	addAnimate("v2",32,39);
+	addAnimate("v3",37,49);
+	addAnimate("v4",38,44);
 	
-	addAnimate('e1',10,20);
-	addAnimate("e2",11,18);
-	addAnimate("e3",14,24);
-	addAnimate("e4",15,21);
-	addAnimate("e5",18,27);
+	addAnimate('e1',35,45);
+	addAnimate("e2",36,43);
+	addAnimate("e3",39,49);
+	addAnimate("e4",40,46);
+	addAnimate("e5",43,52);
 
-	addAnimate('n1',16,26);
-	addAnimate("n2",18,23);
-	addAnimate("n3",22,29);
-	addAnimate("n4",23,25);
-	addAnimate("n5",25,32);
+	addAnimate('n1',41,51);
+	addAnimate("n2",43,48);
+	addAnimate("n3",47,54);
+	addAnimate("n4",48,50);
+	addAnimate("n5",50,57);
 
-	addAnimate('u1',19,30);
-	addAnimate("u2",22,27);
-	addAnimate("u3",25,33);
-	addAnimate("u4",26,36);
+	addAnimate('u1',44,55);
+	addAnimate("u2",47,52);
+	addAnimate("u3",50,58);
+	addAnimate("u4",51,61);
 	
-	addAnimate('e21',23,35);
-	addAnimate("e22",26,31);
-	addAnimate("e23",28,38);
-	addAnimate("e24",29,41);
-	addAnimate("e25",31,37);
+	addAnimate('e21',48,60);
+	addAnimate("e22",51,56);
+	addAnimate("e23",53,63);
+	addAnimate("e24",54,66);
+	addAnimate("e25",56,62);
 
+	addAnimate("lit1",13,20);
+	addAnimate("lit2",16,22);
+	addAnimate("lit3",18,30);
+	addAnimate("lit5",24,35);
+	$("#gradient_position").velocity({ y1: 1005, y2: 1000},{
+		"duration":12*50, 
+		"complete":function(){
+			$("#gradient_position").attr({y1:400,y2:401});
+			$("#gradient stop:first-child").attr({"stop-opacity":1});
+			$("#gradient stop:last-child").attr({"stop-opacity":0});
+			$("#gradient_position").velocity({ y1: 1000, y2: 1005},12*50);			
+			
+		}
+	});	
+	
+	addAnimate("lit1",13,20);
+	addAnimate("lit2",16,22);
+	addAnimate("lit3",18,30);
+	addAnimate("lit5",24,35);
+	$("#litera").css({"transform": "skew(-25deg)"});
+
+	$("#litera").css({"-moz-transform" : "skew(-25deg) translateX(500px)"});
+	$("#wrapper").delay(21*50).velocity({rotateZ:"-25deg"},(70-21)*50);
+	$("#lit4").velocity({scaleX:"0"},0).delay(29*50).velocity({scaleX:"1"},(39-29)*50);
+
+	$("body").on("mousewheel", function(e) {
+		// console.log(e.deltaX, e.deltaY, e.deltaFactor);
+		// $("#linearGradient12756").velocity({ y1: 1000, y2: 1100},1000)
+		
+	})
 	function addAnimate(el, from, to){		
-		var m = 100;
+		var m = 50
 		del = from*m;
 		dur = (to-from)*m;		
-		return $("#"+el).delay(del).animate({strokeDashoffset:0},{
-			duration:dur
+		$("#"+el).delay(del).velocity({"stroke-dashoffset":0},{
+			duration:dur,
+			"easing": "easeInSine"
 		})
 	}
 })

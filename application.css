@@ -6,7 +6,7 @@ html,body{
 #logo{
 	position: absolute;
 	top:50%;
-	margin-top: -100px;
+	margin-top: -50px;
 	left: 30%;
 	width: 40%;
 	height: 100px;
@@ -43,3 +43,33 @@ html,body{
 	top:0;
 	left: 0;
 }    
+#front{
+	position: absolute;
+	left: 0px;
+	top: 60px;
+	height: 90%;
+	width: 100%;
+}		
+#litera{
+	transform-origin: 0% 100%;			
+}
+#litera path{
+    stroke-dashoffset: 3000;	
+    stroke-dasharray: 3000 3000;
+    fill:none;
+    stroke:#3eeec1;
+    stroke-width:60;
+
+	/*transform:skew(-25deg);*/
+}
+#wrapper{
+	/*transform-origin: 90% 0%;*/
+	transform-origin:90% -15%;
+}
+#litera #lit4{
+	stroke-dasharray: 0;
+	stroke-dashoffset: 0;
+	transform: scaleX(0);
+	transform-origin: 0% 50%;
+	fill: #3eeec1;
+}
