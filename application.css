@@ -14,57 +14,76 @@ html,body{
 #logo path{
 	stroke-dasharray: 200;
 	stroke-dashoffset: 200;
+	transition: stroke-dashoffset 48ms linear;
 }
 
 .header{
 	height: 60px;
-	line-height: 59px;
 	width: 100%;
 	background: #252a29;
 	color: #fff;
 }
+.header .logo{
+	width: 25%;
+
+	display: inline-block;
+}
+.header .logo svg{
+  margin: 0 auto;
+  display: block;
+  height: 60px;
+	width: 150px;
+}
+.header .logo svg path{
+	stroke: #eee !important;
+}
 .header ul{
 	margin: 0;
-	height: 100%;
+	width: 50%;
+	padding: 0;
+	line-height: 60px;
 	display: inline-block;
-	vertical-align: middle;
+	white-space: nowrap;
+  overflow: hidden;
 }
 .header ul>li{
 	display: inline-block;
-	padding: 0px 30px;
+	padding: 0px 2%;
+	height: 100%;
 	cursor: pointer;
 }
 .header ul>li:hover{
 	background-color: #333;
-}		
+}
 #lines{
 	width: 100%;
 	height: 100%;
 	top:0;
 	left: 0;
-}    
+}
 #front{
 	position: absolute;
 	left: 0px;
 	top: 60px;
 	height: 90%;
 	width: 100%;
-}		
+}
 #litera{
-	transform-origin: 0% 100%;			
+	transform-origin: 0% 100%;
 }
 #litera path{
-    stroke-dashoffset: 3000;	
+    stroke-dashoffset: 3000;
     stroke-dasharray: 3000 3000;
     fill:none;
     stroke:#3eeec1;
     stroke-width:60;
-
+    transition: stroke-dashoffset 50ms linear;
 	/*transform:skew(-25deg);*/
 }
 #wrapper{
 	/*transform-origin: 90% 0%;*/
 	transform-origin:90% -15%;
+	transition: transfrom 50ms linear;
 }
 #litera #lit4{
 	stroke-dasharray: 0;
