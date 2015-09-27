@@ -2,7 +2,8 @@ var animations = [];
 $(function(){
 	console.log("start");
 	var i=1,
-		m = 40;
+		m = 40,
+		stop=false;
 
 
 
@@ -23,18 +24,19 @@ $(function(){
 
 	$("body").on("mousewheel", function(e) {
 		// console.log(i, e.originalEvent.deltaY);
-		clearInterval(chrome);
-		if(e.originalEvent.deltaY>0){
+	if(e.originalEvent.deltaY>0){
+		stop=true;
 		step(i++);
 		animations.forEach(function(a){a.step(i)});
 	}	else{
+			stop = true;
 			localStorage.setItem("forward", "false");
-			console.log(localStorage)
 			animations.forEach(function(a){a.rollback()})
 			setTimeout(function() {
-				chrome = run();
+				stop = false;
+				run(0);
 				i=0;
-			}, 500);
+			}, 1200);
 
 
 		}
@@ -87,10 +89,10 @@ $(function(){
 		new Animation("#gradient_position",13,21,980,"gradient_2", 400, 	-(980-400)/(21-13))
 
 		new Animation(".center-title.top div",42,53, 0, "margin-top", 100, 100/(53-41));
-		new Animation(".center-title.bottom div",45,55, 0, "margin-top", -100, -100/(53-42));
+		new Animation(".center-title.bottom div",45,55, 0, "margin-top", -100, -100/(54-44));
 		new Animation(".background",18,28, 1, "opacity", 0, -1/(24-18));
 		new Animation(".background",18,42, 1, "scale", 1.1, 0.1/(42-18));
-		//transition: opacity 300ms linear, transform 2100ms linear;
+
  	function step(i){
 
 		if(i==12){
@@ -99,27 +101,29 @@ $(function(){
 		 	$("#gradient stop:last-child").attr({"stop-opacity":0});
 	  }
  	}
- 	function run(){
- 	if(localStorage.getItem("forward")=="true"){
- 		console.log("forward",localStorage);
- 		animations.forEach(function(a){a.forward()})
- 	}else{
-	return setInterval(function() {
-	  	i++;
-	  	step(i);
-	  	animations.forEach(function(a){a.step(i)})
-	  	console.log(i);
-
-	  	if(i>75){
-	  		clearInterval(chrome);
-	  	  localStorage.setItem("forward", "true");
+ 	function run(j){
+		j++
+	  if(j>75 || stop){
+	  	localStorage.setItem("forward",true);
+	  	return;
+	  }
+	  // console.log(j);
+	  step(j);
+	  var test = []
+	  animations.forEach(function(a){test.push(a.step(j))})
+	  $.when.apply(this, test).then(function(){
+	  		i++;
+		  	run(j);
 	  	}
-		}, m);
+  	)
 	}
-}
-	var chrome = run();
-
+	if(localStorage.getItem("forward")=="true"){
+		 animations.forEach(function(a){a.forward()})
+	}else{
+	var chrome = run(0);
+	}
  })
+
 
 function Animation(el, from, to, limit, param_name, value, diff){
 	this.$el = $(el);
@@ -141,7 +145,7 @@ function Animation(el, from, to, limit, param_name, value, diff){
 
 Animation.prototype.rollback = function(){
 		// console.log("rollback",this.$el.selector,this.default_value);
-		this.$el.css("transition","all 500ms ease-out");
+		this.$el.css("transition","all 1000ms ease-out");
 		this.val = this.default_value;
 		if(this.param_name == "rotateZ"){
 			this.$el.css("transform","rotateZ("+this.default_value+"deg)");
@@ -179,13 +183,11 @@ Animation.prototype.forward = function(){
 	}
 }
 Animation.prototype.step = function(i){
-	this.$el.css("transition","all 50ms ease");
-	if(this.from<=i && i<=this.to){
-
+	this.$el.css("transition","all 24ms ease");
+	if(this.from<=i && i<this.to){
+		var self = this;
+		var d = $.Deferred();
 		this.val -= this.diff;
-
-
-
 			if($.inArray(this.param_name,["scaleX","gradient_1","gradient_2","opacity"])>-1){
 				if(this.val>this.limit){
 					this.val = this.limit;
@@ -198,7 +200,8 @@ Animation.prototype.step = function(i){
 				}
 			}
 		// }
-		// console.log(this.$el.selector,this.diff,this.val,this);
+		// console.log(this.$el.selector,this.diff,this.val,this.to-i,this);
+
 
 		switch(this.param_name){
 			case "rotateZ": this.$el.css("transform", "rotateZ("+this.val+"deg)"); break;
@@ -206,7 +209,17 @@ Animation.prototype.step = function(i){
 			case "scale":  this.$el.css("transform", "scale("+this.val+")"); break;
 			case "gradient_1": this.$el.attr({ y1: this.val+5, y2: this.val}); break;
 			case "gradient_2": this.$el.attr({ y1: this.val, y2: this.val+5}); break;
-			default: this.$el.css(this.param_name,this.val);
+			default:  this.$el.css(this.param_name,this.val);
+		}
+
+		if (this.param_name=="gradient_1"|| this.param_name=="gradient_2"){
+			setTimeout(function() {d.resolve()}, 24);
+		}else{
+			this.$el.on("transitionend",function(){
+				d.resolve();
+			})
 		}
 	}
+
+	return d;
 }
