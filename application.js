@@ -25,6 +25,8 @@ $(function(){
 	$("body").on("mousewheel", function(e) {
 		// console.log(i, e.originalEvent.deltaY);
 	if(e.originalEvent.deltaY>0){
+		if(localStorage.getItem("forward")=="true")
+			return;
 		stop=true;
 		step(i++);
 		animations.forEach(function(a){a.step(i)});
